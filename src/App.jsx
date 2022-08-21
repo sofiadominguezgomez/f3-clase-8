@@ -11,6 +11,19 @@ export default class App extends Component {
     formas tenemos para no perder el contexto?
   */
 
+    constructor() {
+      super()
+      this.state = {
+        colors: this.colors
+      }
+    }
+
+    shuffle = () => {
+      this.setState({
+        colores:(this.state.colors.sort(()=> Math.random() - 0.5))
+      })
+    }
+
 
   /* ESPACIO DE TRABAJO
   Funcion Shuffle
@@ -25,7 +38,7 @@ export default class App extends Component {
         <div className="panel">
           {this.colors.map(color => <div key={color} className={color}>{color}</div>)}
         </div>
-        <Button fn={"Recibe una funcion"} />
+        <Button fn={this.shuffle} />
       </div>
 
     )
